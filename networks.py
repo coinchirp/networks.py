@@ -900,6 +900,102 @@ nets = dict(
         #ANNOUNCE_CHANNEL='#p2pool-alt',
         VERSION_CHECK=lambda v: True,
     ),
+    
+     vertcoin=math.Object(
+        PARENT=networks.nets['vertcoin'],
+        SHARE_PERIOD=15, # seconds
+        CHAIN_LENGTH=24*60*60//10, # shares
+        REAL_CHAIN_LENGTH=24*60*60//10, # shares
+        TARGET_LOOKBEHIND=200, # shares
+        SPREAD=12, # blocks
+        IDENTIFIER='a06a81c827cab973'.decode('hex'),
+        PREFIX='7c3614a6bcdcf794'.decode('hex'),
+        P2P_PORT=9346,
+        MIN_TARGET=4,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=False,
+        WORKER_PORT=9171,
+        BOOTSTRAP_ADDRS='q30.qhor.net seed.p2pool.etyd.org vtc.royalminingco.com'.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool-vtc',
+        VERSION_CHECK=lambda v: True,
+    ),
+    
+    cachecoin=math.Object(
+        PARENT=networks.nets['cachecoin'],
+        SHARE_PERIOD=120, # seconds
+        CHAIN_LENGTH=12*60*60//120, # shares
+        REAL_CHAIN_LENGTH=12*60*60//120, # shares
+        TARGET_LOOKBEHIND=30, # shares
+        SPREAD=36, # blocks
+        IDENTIFIER='65375c4f7a4d584f'.decode('hex'),
+        PREFIX='642a2c6524364268'.decode('hex'),
+        P2P_PORT=2226,
+        MIN_TARGET=4,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=False,
+        WORKER_PORT=8336,
+        BOOTSTRAP_ADDRS='207.30.158.106 p2cache.syware.de q39.qhor.net q30.qhor.net'.split(' '),
+        ANNOUNCE_CHANNEL='#cachecoin-bots',
+        VERSION_CHECK=lambda v: True,
+    ),
+    
+    auroracoin=math.Object(
+        PARENT=networks.nets['auroracoin'],
+        SHARE_PERIOD=15, # seconds
+        CHAIN_LENGTH=24*60*60//10, # shares
+        REAL_CHAIN_LENGTH=24*60*60//10, # shares
+        TARGET_LOOKBEHIND=200, # shares
+        SPREAD=10, # blocks
+        IDENTIFIER='e037d5b8c69231ce'.decode('hex'),
+        PREFIX='7208c1a53ef621ce'.decode('hex'),
+        P2P_PORT=12348,
+        MIN_TARGET=0,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=True,
+        WORKER_PORT=12347,
+        BOOTSTRAP_ADDRS='46.149.29.168 5.9.157.150'.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool-aur',
+        VERSION_CHECK=lambda v: True,
+        VERSION_WARNING=lambda v: 'Upgrade AuroraCoin to >=1.0!' if v < 1000000 else None,
+    ),
+    
+    densecoin=math.Object(
+        PARENT=networks.nets['densecoin'],
+        SHARE_PERIOD=10, # seconds
+        CHAIN_LENGTH=24*60*60//10, # shares
+        REAL_CHAIN_LENGTH=24*60*60//10, # shares
+        TARGET_LOOKBEHIND=200, # shares
+        SPREAD=12, # blocks
+        IDENTIFIER='e037d5b8c6923410'.decode('hex'),
+        PREFIX='7208c1a53ef629b0'.decode('hex'),
+        P2P_PORT=20000,
+        MIN_TARGET=0,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=True,
+        WORKER_PORT=3334,
+        BOOTSTRAP_ADDRS=''.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool-alt',
+        VERSION_CHECK=lambda v: True,
+    ),
+    
+    digital=math.Object(
+        PARENT=networks.nets['digital'],
+        SHARE_PERIOD=30, # seconds target spacing
+        CHAIN_LENGTH=24*60*60//10, # shares
+        REAL_CHAIN_LENGTH=24*60*60//10, # shares
+        TARGET_LOOKBEHIND=200, # shares coinbase maturity
+        SPREAD=72, # blocks
+        IDENTIFIER='a5aed03050126d6d'.decode('hex'),
+        PREFIX='b6c0601991aa19a3'.decode('hex'),
+        P2P_PORT=25396,
+        MIN_TARGET=0,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=True,
+        WORKER_PORT=25397,
+        BOOTSTRAP_ADDRS='pool.bounceme.net'.split(' '),
+        ANNOUNCE_CHANNEL='#p2pool-alt',
+        VERSION_CHECK=lambda v: True,
+    ),
 
 )
 for net_name, net in nets.iteritems():
